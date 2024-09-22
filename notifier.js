@@ -7,8 +7,6 @@ const token = process.env.TELEGRAM_TOKEN;
 const channel = '@preciogasoillasmesas';
 const stationId = '8907';
 
-console.log(token);
-
 let data = "";
 https.get(url, (response) => {
   response
