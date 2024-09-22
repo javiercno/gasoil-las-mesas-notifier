@@ -1,0 +1,23 @@
+name: Download latest prices
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 7 * * *
+
+jobs:
+  downloadStatus:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js version 18.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+    - run: TELEGRAM_TOKEN=${{secrets.TELEGRAM_TOKEN}} node notifier.js
+    - run: |
+        git config user.name javiercno
+        git config user.email javiercanosoler@gmail.com
+        git add .
+        git commit -m "Add prices for today"
+        git push
