@@ -18,6 +18,7 @@ jobs:
     - run: |
         git config user.name javiercno
         git config user.email javiercanosoler@gmail.com
+        git pull
         git add .
         git commit -m "Add prices for today"
         git push
